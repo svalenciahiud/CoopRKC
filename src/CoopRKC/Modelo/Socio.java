@@ -31,11 +31,12 @@ public class Socio {
         // Validación para no permitir números de cuenta repetidos para un mismo socio
         boolean numeroExistente = cuentas.stream()
                 .anyMatch(cuenta -> cuenta.getNumeroCuenta().equals(nuevaCuenta.getNumeroCuenta()));
-
         if (numeroExistente) {
             System.out.println("Error: El socio " + nombre + " ya tiene una cuenta con el número " + nuevaCuenta.getNumeroCuenta());
         } else {
             cuentas.add(nuevaCuenta);
+            System.out.println(" " + nuevaCuenta.getNumeroCuenta() + " agregada al socio " + nombre);
+            System.out.println("---------------------------------------------------------------------------");
         }
     }
     //Metodo para buscar una cuenta por su número
@@ -44,13 +45,6 @@ public class Socio {
                 .filter(c -> c.getNumeroCuenta().equals(numeroCuenta))
                 .findFirst();
     }
-    //Metodo para listar todas las cuentas del socio
-    @Override
-    public String toString() {
-        return "Socio{" +
-                "nombre='" + nombre + '\'' +
-                ", cedula='" + cedula + '\'' +
-                ", cuentas=" + cuentas.size() +
-                '}';
-    }
+
+
 }

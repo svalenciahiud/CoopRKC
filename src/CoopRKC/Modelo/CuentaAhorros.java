@@ -11,11 +11,15 @@ public class CuentaAhorros extends Cuenta {
     public double getInteresAnual() {
         return interesAnual;
     }
-    //Metodo para aplicar el interés anual al saldo
+    //Metodo para aplicar el interés anual al saldo de la cuenta
+    @Override
     public void aplicarInteres() {
         double interesGenerado = saldo * (interesAnual / 100);
         saldo += interesGenerado;
         System.out.println("Interés de " + interesGenerado + " aplicado. Nuevo saldo: " + saldo);
     }
+
+
+
 }
 

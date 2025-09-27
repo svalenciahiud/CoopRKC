@@ -27,15 +27,23 @@ public abstract class Cuenta {
         }
     }
     // Retirar con validaciones
-    public void retirar(double monto) {
+    public boolean retirar(double monto) {
         if (monto > saldo) {
-            throw new IllegalArgumentException("Saldo insuficiente para realizar el retiro.");
+            System.out.println("Saldo insuficiente para realizar el retiro.");
+            return false;
         }
         if (monto <= 0) {
-            throw new IllegalArgumentException("El monto a retirar debe ser positivo.");
+            System.out.println("El monto a retirar debe ser positivo.");
+            return false;
         }
         saldo -= monto;
         System.out.println("Retiro exitoso. Nuevo saldo: " + saldo);
+        return true;
+    }
+
+    // Metodo para aplicar interés, que puede ser sobrescrito por subclases
+    public void aplicarInteres() {
+        // Por defecto, no hace nada
     }
 
     @Override

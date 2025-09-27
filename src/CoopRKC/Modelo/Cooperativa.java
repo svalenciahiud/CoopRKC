@@ -15,7 +15,8 @@ public class Cooperativa {
     //Metodo para registrar un nuevo socio
     public void registrarSocio(Socio socio) {
         socios.add(socio);
-        System.out.println("Socio " + socio.getNombre() + " registrado exitosamente.");
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println("Socio " + socio.getNombre() + " - " + socio.getCedula() + " Registrado exitosamente.");
     }
     // Getter para obtener la lista de socios desde fuera de la clase / Encapsulamiento
     public List<Socio> getSocios() {
@@ -23,10 +24,8 @@ public class Cooperativa {
     }
     //Metodo para listar todos los socios de la cooperativa
     public void listarSocios() {
-        System.out.println("\n--- Lista de Socios en " + this.nombre + " ---");
-        socios.stream()
-                .forEach(System.out::println);
-        System.out.println("----------------------------------------");
+        System.out.println("Lista de Socios en " + this.nombre + " ---");
+        socios.stream().forEach(System.out::println);
     }
     //Metodo para calcular el saldo total de todas las cuentas de todos los socios
     public double calcularSaldoTotal() {
