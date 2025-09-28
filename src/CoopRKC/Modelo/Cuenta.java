@@ -37,7 +37,6 @@ public abstract class Cuenta {
             return false;
         }
         saldo -= monto;
-        System.out.println("Retiro exitoso. Nuevo saldo: " + saldo);
         return true;
     }
 

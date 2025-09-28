@@ -57,25 +57,21 @@ public class App {
 
         //Listar los nombres de todos los socios
         System.out.println("\nNombres de todos los socios:");
-        coopRKC.getSocios().stream()
-                .map(Socio::getNombre) //Metodo de referencia para obtener nombres
-                .forEach(nombre -> System.out.println("- " + nombre));
+        coopRKC.listarSocios();
 
         // Filtrar y mostrar las cuentas con saldo mayor a $500,000
         System.out.println("\nCuentas con saldo mayor a $500,000:");
-        List<Cuenta> cuentasConSaldoAlto = coopRKC.filtrarCuentasPorSaldo(500000);
-        cuentasConSaldoAlto.forEach(System.out::println);
+        coopRKC.filtrarCuentasPorSaldo(500000).forEach(System.out::println);
 
         //Calcular el total del dinero en la cooperativa
         double saldoTotal = coopRKC.calcularSaldoTotal();
         System.out.println("\nSaldo total en la cooperativa: $" + saldoTotal);
 
-        //Gestión de errores en retiros
-        System.out.println("\nRetiro Excesivo de Dinero");
-        Cuenta cuentaSocio2 = socio2.getCuenta("CA-455-567-498").orElse(null);
-        if (cuentaSocio2 != null) {
-            Transaccion retiroExcesivo = new Retiro(1000000); // Saldo es 450000
-            retiroExcesivo.ejecutar(cuentaSocio2);
+        // Retiro excesivo de la cuenta de Santiago Valencia Hernández
+        Cuenta cuentaSantiago = socio1.getCuenta("CA-456-789-455").orElse(null);
+        if (cuentaSantiago != null) {
+            Retiro retiroExcesivo = new Retiro(1200000);
+            retiroExcesivo.ejecutar(cuentaSantiago);
         }
 
         System.out.println("\n--- Prototipo Finalizado ---");

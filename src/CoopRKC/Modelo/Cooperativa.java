@@ -24,8 +24,7 @@ public class Cooperativa {
     }
     //Metodo para listar todos los socios de la cooperativa
     public void listarSocios() {
-        System.out.println("Lista de Socios en " + this.nombre + " ---");
-        socios.stream().forEach(System.out::println);
+        socios.stream().map(Socio::getNombre).forEach(nombre -> System.out.println("- " + nombre));
     }
     //Metodo para calcular el saldo total de todas las cuentas de todos los socios
     public double calcularSaldoTotal() {

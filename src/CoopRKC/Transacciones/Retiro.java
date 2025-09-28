@@ -12,10 +12,14 @@ public class Retiro implements Transaccion {
     @Override
     public void ejecutar(Cuenta cuenta) {
         System.out.println("\nIntentando retirar " + monto + " de la cuenta " + cuenta.getNumeroCuenta() + " con saldo " + cuenta.getSaldo());
+        if (monto > cuenta.getSaldo()) {
+            System.out.println("Error: El monto a retirar excede el saldo disponible.");
+            return;
+        }
         try {
             cuenta.retirar(monto);
+            System.out.println("Retiro exitoso. Nuevo saldo: " + cuenta.getSaldo());
         } catch (IllegalArgumentException e) {
-            // Gestión de errores con try-catch
             System.out.println("Error al procesar retiro: " + e.getMessage());
         }
     }
